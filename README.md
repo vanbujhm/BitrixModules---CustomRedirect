@@ -1,1 +1,1 @@
-# BitrixModules---CustomRedirect
+# BitrixModules - CustomRedirect
