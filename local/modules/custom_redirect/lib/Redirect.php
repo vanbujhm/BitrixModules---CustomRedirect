@@ -14,10 +14,11 @@ class Redirect{
     public static function trailingSlashUrl(){
         if(Option::get(ADMIN_MODULE_NAME, "trailing_slash_url") == 'Y'){
             $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-            if(strpos($uri_parts[0], '/bitrix/') === false && preg_match("/^.*\/$/", $uri_parts[0]) == false){
+            if(preg_match("/^((\/bitrix\/)|(.*\/)|(.*\.php))$/", $uri_parts[0]) == false){
                 $url = $uri_parts[0].'/';
-                if(!empty($uri_parts[1]))
+                if(!empty($uri_parts[1])){
                     $url .= '?'.$uri_parts[1];
+                }
                 header("Location: $url", TRUE, 301);
                 exit();
             }
