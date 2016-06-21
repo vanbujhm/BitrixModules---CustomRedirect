@@ -1,0 +1,1 @@
+<?require($_SERVER["DOCUMENT_ROOT"]."/local/modules/custom_redirect/admin/custom_redirect_index.php");?>
