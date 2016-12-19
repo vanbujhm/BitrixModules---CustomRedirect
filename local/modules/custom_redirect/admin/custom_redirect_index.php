@@ -29,8 +29,8 @@ $tabControl = new CAdminTabControl("tabControl", array(
 
 if($request->isPost() && check_bitrix_sessid()){
     if($request->getPost('add') == 'new'){
-        $url_old = $request->getPost('url_old');
-        $url_new = $request->getPost('url_new');
+        $url_old = trim($request->getPost('url_old'));
+        $url_new = trim($request->getPost('url_new'));
         $type = $request->getPost('type');
         if(!empty($url_old) && !empty($url_new) && !empty($type)){
             RedirectTable::add(array('URL_OLD' => $url_old, 'URL_NEW' => $url_new, 'TYPE' => $type));
@@ -47,8 +47,8 @@ if($request->isPost() && check_bitrix_sessid()){
     }
     elseif($request->getPost('edit') > 0){
         $id = $request->getPost('edit');
-        $url_old = $request->getPost("url_old_$id");
-        $url_new = $request->getPost("url_new_$id");
+        $url_old = trim($request->getPost("url_old_$id"));
+        $url_new = trim($request->getPost("url_new_$id"));
         $type = $request->getPost("type_$id");
         if(!empty($url_old) && !empty($url_new) && !empty($type)){
             RedirectTable::update($id, array('URL_OLD' => $url_old, 'URL_NEW' => $url_new, 'TYPE' => $type));
