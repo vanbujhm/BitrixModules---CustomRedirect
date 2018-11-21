@@ -12,9 +12,23 @@ Loc::loadMessages(__FILE__);
 
 class Redirect{
     public static function trailingSlashUrl(){
+        $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        if(preg_match("/^((.*\.php)|(.*\.html))$/", $uri_parts[0])){
+            $url = str_replace(array('index.php', 'index.html'), array(''), $uri_parts[0]);
+            if(preg_match("/^((.*\.php)|(.*\.html))$/", $url)){
+                require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+                \Bitrix\Iblock\Component\Tools::process404("404", true, true, true);
+            }
+            else{
+                if(!empty($uri_parts[1])){
+                    $url .= '?'.$uri_parts[1];
+                }
+                header("Location: $url", TRUE, 301);
+                exit();
+            }
+        }
         if(Option::get(ADMIN_MODULE_NAME, "trailing_slash_url") == 'Y'){
-            $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-            if(preg_match("/^((\/bitrix\/)|(.*\/)|(.*\.php(\?.+)?))$/", $uri_parts[0]) == false){
+            if(preg_match("/^((\/bitrix\/)|(.*\/)|(.*\.php)|(.*\.xml)|(.*\.js)|(.*\.jpeg)|(.*\.jpg)|(.*\.png)|(.*\.pdf)|(.*\.css)|(.*\.svg)|(.*\.doc))$/", $uri_parts[0]) == false){
                 $url = $uri_parts[0].'/';
                 if(!empty($uri_parts[1])){
                     $url .= '?'.$uri_parts[1];

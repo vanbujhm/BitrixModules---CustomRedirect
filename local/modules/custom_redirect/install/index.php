@@ -51,8 +51,8 @@ class custom_redirect extends CModule
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         }
         $this->MODULE_ID = 'custom_redirect';
-        $this->MODULE_NAME = Loc::getMessage('MODULE_NAME');
-        $this->MODULE_DESCRIPTION = Loc::getMessage('MODULE_DESCRIPTION');
+        $this->MODULE_NAME = Loc::getMessage('custom_redirect_MODULE_NAME');
+        $this->MODULE_DESCRIPTION = Loc::getMessage('custom_redirect_MODULE_DESCRIPTION');
         $this->MODULE_GROUP_RIGHTS = 'N';
         $this->PARTNER_NAME = "Custom";
         $this->PARTNER_URI = "http://very-good.ru/";

@@ -9,16 +9,16 @@ $aMenu = array(
     array(
         'parent_menu' => 'global_menu_content',
         'sort' => 400,
-        'text' => Loc::getMessage("module_name"),
-        'title' => Loc::getMessage("module_name"),
+        'text' => Loc::getMessage("custom_redirect_module_name"),
+        'title' => Loc::getMessage("custom_redirect_module_name"),
         'url' => 'custom_redirect_index.php',
         'items_id' => 'menu_references',
         'items' => array(
             array(
-                'text' => Loc::getMessage("module_tab_list"),
+                'text' => Loc::getMessage("custom_redirect_module_tab_list"),
                 'url' => 'custom_redirect_index.php?lang='.LANGUAGE_ID,
                 'more_url' => array('custom_redirect_index.php?lang='.LANGUAGE_ID),
-                'title' => Loc::getMessage("module_tab_list"),
+                'title' => Loc::getMessage("custom_redirect_module_tab_list"),
             ),
         ),
     ),

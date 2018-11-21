@@ -34,12 +34,12 @@ class RedirectTable extends DataManager
             'URL_OLD' => array(
                 'data_type' => 'string',
                 'required' => true,
-                'title' => Loc::getMessage("OLD_URL"),
+                'title' => Loc::getMessage("custom_redirect_OLD_URL"),
             ),
             'URL_NEW' => array(
                 'data_type' => 'string',
                 'required' => true,
-                'title' => Loc::getMessage("NEW_URL"),
+                'title' => Loc::getMessage("custom_redirect_NEW_URL"),
             ),
             'TYPE' => array(
                 'data_type' => 'integer',

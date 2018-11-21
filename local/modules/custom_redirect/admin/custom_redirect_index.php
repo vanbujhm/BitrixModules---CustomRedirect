@@ -22,8 +22,8 @@ $request = $context->getRequest();
 $tabControl = new CAdminTabControl("tabControl", array(
     array(
         "DIV" => "edit1",
-        "TAB" => Loc::getMessage("MAIN_TAB_SET"),
-        "TITLE" => Loc::getMessage("MAIN_TAB_TITLE_SET"),
+        "TAB" => Loc::getMessage("custom_redirect_MAIN_TAB_SET"),
+        "TITLE" => Loc::getMessage("custom_redirect_MAIN_TAB_TITLE_SET"),
     ),
 ));
 
@@ -35,12 +35,12 @@ if($request->isPost() && check_bitrix_sessid()){
         if(!empty($url_old) && !empty($url_new) && !empty($type)){
             RedirectTable::add(array('URL_OLD' => $url_old, 'URL_NEW' => $url_new, 'TYPE' => $type));
             CAdminMessage::showMessage(array(
-                "MESSAGE" => Loc::getMessage("redirect_add_success"),
+                "MESSAGE" => Loc::getMessage("custom_redirect_redirect_add_success"),
                 "TYPE" => "OK",
             ));
         } else {
             CAdminMessage::showMessage(array(
-                "MESSAGE" => Loc::getMessage("redirect_add_error"),
+                "MESSAGE" => Loc::getMessage("custom_redirect_redirect_add_error"),
                 "TYPE" => "ERROR",
             ));
         }
@@ -53,12 +53,12 @@ if($request->isPost() && check_bitrix_sessid()){
         if(!empty($url_old) && !empty($url_new) && !empty($type)){
             RedirectTable::update($id, array('URL_OLD' => $url_old, 'URL_NEW' => $url_new, 'TYPE' => $type));
             CAdminMessage::showMessage(array(
-                "MESSAGE" => Loc::getMessage("redirect_edit_success"),
+                "MESSAGE" => Loc::getMessage("custom_redirect_redirect_edit_success"),
                 "TYPE" => "OK",
             ));
         } else {
             CAdminMessage::showMessage(array(
-                "MESSAGE" => Loc::getMessage("redirect_edit_error"),
+                "MESSAGE" => Loc::getMessage("custom_redirect_redirect_edit_error"),
                 "TYPE" => "ERROR",
             ));
         }
@@ -67,7 +67,7 @@ if($request->isPost() && check_bitrix_sessid()){
         $id = $request->getPost('del');
         RedirectTable::delete($id);
         CAdminMessage::showMessage(array(
-            "MESSAGE" => Loc::getMessage("redirect_del"),
+            "MESSAGE" => Loc::getMessage("custom_redirect_redirect_del"),
             "TYPE" => "OK",
         ));
     }
@@ -85,9 +85,9 @@ $tabControl->begin();
         <td colspan="2">
             <table width="100%">
                 <tr>
-                    <th style="width: 35%; text-align: left;"><?=Loc::getMessage("url_old_title")?></th>
-                    <th style="width: 35%; text-align: left;"><?=Loc::getMessage("url_new_title")?></th>
-                    <th style="width: 15%; text-align: left;"><?=Loc::getMessage("type_title")?></th>
+                    <th style="width: 35%; text-align: left;"><?=Loc::getMessage("custom_redirect_url_old_title")?></th>
+                    <th style="width: 35%; text-align: left;"><?=Loc::getMessage("custom_redirect_url_new_title")?></th>
+                    <th style="width: 15%; text-align: left;"><?=Loc::getMessage("custom_redirect_type_title")?></th>
                     <th style="width: 15%; text-align: left;"></th>
                 </tr>
                 <tr>
@@ -102,7 +102,7 @@ $tabControl->begin();
                         </select>
                     </td>
                     <td>
-                        <button name="add" value="new" style="width: 46%;" class="adm-btn-save"><?=Loc::getMessage("add_button")?></button>
+                        <button name="add" value="new" style="width: 46%;" class="adm-btn-save"><?=Loc::getMessage("custom_redirect_add_button")?></button>
                     </td>
                 </tr>
                 <? $redirectRes = RedirectTable::getList(array('select' =>array('ID', 'URL_OLD', 'URL_NEW', 'TYPE'), 'order' => array('URL_OLD' =>'ASC')));
@@ -129,12 +129,12 @@ $tabControl->begin();
                     </td>
                     <td>
                         <div class="view">
-                            <button class="adm-btn-save" onclick="document.getElementById('item-<?=$redir["ID"];?>').className = 'item edit-mode'; return false;" style="width: 46%;"><?=Loc::getMessage("edit_button")?></button>
-                            <button name="del" value="<?=$redir['ID'];?>" style="width: 46%;"><?=Loc::getMessage("del_button")?></button>
+                            <button class="adm-btn-save" onclick="document.getElementById('item-<?=$redir["ID"];?>').className = 'item edit-mode'; return false;" style="width: 46%;"><?=Loc::getMessage("custom_redirect_edit_button")?></button>
+                            <button name="del" value="<?=$redir['ID'];?>" style="width: 46%;"><?=Loc::getMessage("custom_redirect_del_button")?></button>
                         </div>
                         <div class="edit">
-                            <button class="adm-btn-save" name="edit" value="<?=$redir['ID'];?>" style="width: 46%;"><?=Loc::getMessage("ok_button")?></button>
-                            <button class="view-mode" onclick="document.getElementById('item-<?=$redir["ID"];?>').className = 'item'; return false;" style="width: 46%;"><?=Loc::getMessage("cancel_button")?></button>
+                            <button class="adm-btn-save" name="edit" value="<?=$redir['ID'];?>" style="width: 46%;"><?=Loc::getMessage("custom_redirect_ok_button")?></button>
+                            <button class="view-mode" onclick="document.getElementById('item-<?=$redir["ID"];?>').className = 'item'; return false;" style="width: 46%;"><?=Loc::getMessage("custom_redirect_cancel_button")?></button>
                         </div>
                     </td>
                 </tr>
