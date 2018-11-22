@@ -13,7 +13,7 @@ Loc::loadMessages(__FILE__);
 class Redirect{
     public static function trailingSlashUrl(){
         $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-        if(preg_match("/^((.*\.php)|(.*\.html))$/", $uri_parts[0]) && preg_match("/^(\/bitrix\/)/", $uri_parts[0]) == false){
+        if(preg_match("/^((.*\.php)|(.*\.html))$/", $uri_parts[0]) && preg_match("/^((\/bitrix\/)|(\/_?ajax\/))/", $uri_parts[0]) == false){
             $url = str_replace(array('index.php', 'index.html'), array(''), $uri_parts[0]);
             if(preg_match("/^((.*\.php)|(.*\.html))$/", $url)){
                 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
