@@ -1,6 +1,4 @@
 <?php
-namespace Custom_redirect;
-
 defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
 
 use Bitrix\Main\Entity\DataManager;
@@ -8,7 +6,7 @@ use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
 
-class RedirectTable extends DataManager
+class VGCustomRedirectTable extends DataManager
 {
     const LEFT_TO_RIGHT = 'Y';
     const RIGHT_TO_LEFT = 'N';
@@ -34,12 +32,12 @@ class RedirectTable extends DataManager
             'URL_OLD' => array(
                 'data_type' => 'string',
                 'required' => true,
-                'title' => Loc::getMessage("custom_redirect_OLD_URL"),
+                'title' => Loc::getMessage("OLD_URL"),
             ),
             'URL_NEW' => array(
                 'data_type' => 'string',
                 'required' => true,
-                'title' => Loc::getMessage("custom_redirect_NEW_URL"),
+                'title' => Loc::getMessage("NEW_URL"),
             ),
             'TYPE' => array(
                 'data_type' => 'integer',

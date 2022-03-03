@@ -1,6 +1,6 @@
 <?php
 defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
-defined('ADMIN_MODULE_NAME') or define('ADMIN_MODULE_NAME', 'custom_redirect');
+defined('ADMIN_MODULE_NAME') or define('ADMIN_MODULE_NAME', 'vg.custom_redirect');
 
 use Bitrix\Main\Application;
 use Bitrix\Main\Config\Option;
@@ -11,7 +11,7 @@ if (!$USER->isAdmin()) {
 }
 
 $arAllOptions = array(
-	array("use_autosave", GetMessage("custom_redirect_BLOG_USE_AUTOSAVE"), "Y", Array("checkbox")),
+	array("use_autosave", GetMessage("BLOG_USE_AUTOSAVE"), "Y", Array("checkbox")),
 );
 
 $app = Application::getInstance();
@@ -24,8 +24,8 @@ Loc::loadMessages(__FILE__);
 $tabControl = new CAdminTabControl("tabControl", array(
     array(
         "DIV" => "edit1",
-        "TAB" => Loc::getMessage("custom_redirect_MAIN_TAB_SET"),
-        "TITLE" => Loc::getMessage("custom_redirect_MAIN_TAB_TITLE_SET"),
+        "TAB" => Loc::getMessage("MAIN_TAB_SET"),
+        "TITLE" => Loc::getMessage("MAIN_TAB_TITLE_SET"),
     ),
 ));
 
@@ -33,7 +33,7 @@ if((!empty($save) || !empty($restore)) && $request->isPost() && check_bitrix_ses
     if(!empty($restore)){
         Option::delete(ADMIN_MODULE_NAME);
         CAdminMessage::showMessage(array(
-            "MESSAGE" => Loc::getMessage("custom_redirect_REFERENCES_OPTIONS_RESTORED"),
+            "MESSAGE" => Loc::getMessage("REFERENCES_OPTIONS_RESTORED"),
             "TYPE" => "OK",
         ));
     }else{
@@ -44,7 +44,7 @@ if((!empty($save) || !empty($restore)) && $request->isPost() && check_bitrix_ses
         }
         
         CAdminMessage::showMessage(array(
-            "MESSAGE" => Loc::getMessage("custom_redirect_REFERENCES_OPTIONS_SAVED"),
+            "MESSAGE" => Loc::getMessage("REFERENCES_OPTIONS_SAVED"),
             "TYPE" => "OK",
         ));
     }
@@ -61,7 +61,7 @@ $tabControl->begin();
     ?>
 
     <tr>
-        <td width="50%" valign="top" class="adm-detail-content-cell-l"><label for="trailing_slash_url"><?=Loc::getMessage("custom_redirect_trailing_slash_url") ?></label></td>
+        <td width="50%" valign="top" class="adm-detail-content-cell-l"><label for="trailing_slash_url"><?=Loc::getMessage("trailing_slash_url") ?></label></td>
         <td width="50%" valign="middle" class="adm-detail-content-cell-r">
             <input type="checkbox"
                    value="Y"
@@ -92,3 +92,4 @@ $tabControl->begin();
     $tabControl->end();
     ?>
 </form>
+
